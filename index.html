@@ -31,7 +31,7 @@
       --wa2:#18b95a;
     }
 
-    /* TEMA OSCURO (default visual) */
+    /* TEMA OSCURO */
     html[data-theme="dark"]{
       --bg-page-1:#060a12;
       --bg-page-2:#0b1220;
@@ -180,18 +180,26 @@
       gap:8px;
     }
 
-    .theme-chip{
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
+    .theme-toggle{
+      width:42px;
+      height:42px;
+      border-radius:12px;
       border:1px solid var(--line);
       background:var(--surface-3);
-      color:var(--muted);
-      border-radius:999px;
-      padding:8px 10px;
-      font-size:12px;
-      line-height:1;
-      white-space:nowrap;
+      color:var(--text);
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+      transition:transform .12s ease, background .2s ease, border-color .2s ease;
+      flex:0 0 42px;
+    }
+
+    .theme-toggle:hover{ transform:translateY(-1px); }
+    .theme-toggle svg{
+      width:19px;
+      height:19px;
+      display:block;
     }
 
     .nav{
@@ -704,12 +712,12 @@
     }
 
     .about-video-wrap{
-      margin: 12px 0 4px;
+      margin:12px 0 4px;
       border:1px solid var(--line);
       background:var(--surface-3);
       border-radius:14px;
       padding:8px;
-      max-width: 420px;
+      max-width:420px;
     }
 
     .about-video{
@@ -717,8 +725,8 @@
       display:block;
       border-radius:10px;
       background:var(--video-bg);
-      aspect-ratio: 16 / 9;
-      object-fit: contain; /* se ve entero */
+      aspect-ratio:16 / 9;
+      object-fit:contain; /* video entero */
     }
 
     .stats{
@@ -789,7 +797,7 @@
 
     .contact-grid{
       display:grid;
-      grid-template-columns: .95fr 1.05fr;
+      grid-template-columns:.95fr 1.05fr;
       gap:12px;
     }
 
@@ -923,7 +931,7 @@
 
     .section + .section{ padding-top:12px; }
 
-    @media (max-width: 1080px){
+    @media (max-width:1080px){
       .hero-grid,
       .benefits,
       .about-wrap,
@@ -933,65 +941,30 @@
 
       .hero-left{ min-height:auto; }
 
-      .hero-mini{
-        grid-template-columns:1fr;
-      }
+      .hero-mini{ grid-template-columns:1fr; }
 
-      .services-grid{
-        grid-template-columns:repeat(2, minmax(0,1fr));
-      }
+      .services-grid{ grid-template-columns:repeat(2, minmax(0,1fr)); }
     }
 
-    @media (max-width: 900px){
+    @media (max-width:900px){
       .nav{ display:none; }
-      .theme-chip{ display:none; }
       .menu-btn{ display:inline-flex; }
     }
 
-    @media (max-width: 820px){
-      .topbar-inner{
-        min-height:66px;
-      }
-
-      .profile-card .avatar{
-        width:60px;
-        height:60px;
-      }
-
-      .bullet-grid{
-        grid-template-columns:1fr;
-      }
-
-      .ig-grid{
-        grid-template-columns:1fr 1fr;
-      }
-
-      .stats{
-        grid-template-columns:1fr;
-      }
+    @media (max-width:820px){
+      .topbar-inner{ min-height:66px; }
+      .profile-card .avatar{ width:60px; height:60px; }
+      .bullet-grid{ grid-template-columns:1fr; }
+      .ig-grid{ grid-template-columns:1fr 1fr; }
+      .stats{ grid-template-columns:1fr; }
     }
 
-    @media (max-width: 560px){
-      .container{
-        width:min(var(--container), calc(100% - 16px));
-      }
-
-      .hero{
-        padding-top:18px;
-      }
-
-      .hero-left{
-        padding:16px;
-      }
-
-      .hero h1{
-        font-size:29px;
-        max-width:100%;
-      }
-
-      .hero p{
-        font-size:14px;
-      }
+    @media (max-width:560px){
+      .container{ width:min(var(--container), calc(100% - 16px)); }
+      .hero{ padding-top:18px; }
+      .hero-left{ padding:16px; }
+      .hero h1{ font-size:29px; max-width:100%; }
+      .hero p{ font-size:14px; }
 
       .btn{
         min-height:44px;
@@ -999,9 +972,7 @@
         font-size:14px;
       }
 
-      .hero-cta .btn{
-        flex:1 1 calc(50% - 5px);
-      }
+      .hero-cta .btn{ flex:1 1 calc(50% - 5px); }
 
       .services-grid{
         grid-template-columns:repeat(2, minmax(0,1fr));
@@ -1018,9 +989,7 @@
         gap:6px;
       }
 
-      .service-body h3{
-        font-size:14px;
-      }
+      .service-body h3{ font-size:14px; }
 
       .service-body p{
         font-size:12px;
@@ -1032,13 +1001,9 @@
         flex-direction:column;
       }
 
-      .section-head p{
-        font-size:13px;
-      }
+      .section-head p{ font-size:13px; }
 
-      .ig-grid{
-        grid-template-columns:1fr;
-      }
+      .ig-grid{ grid-template-columns:1fr; }
 
       .floating-wa{
         width:56px;
@@ -1047,17 +1012,11 @@
         bottom:12px;
       }
 
-      .footer{
-        padding-bottom:86px;
-      }
+      .footer{ padding-bottom:86px; }
 
-      .about-video-wrap{
-        max-width:100%;
-      }
+      .about-video-wrap{ max-width:100%; }
 
-      .mobile-menu .mobile-actions{
-        grid-template-columns:1fr;
-      }
+      .mobile-menu .mobile-actions{ grid-template-columns:1fr; }
     }
   </style>
 </head>
@@ -1073,7 +1032,12 @@
       </a>
 
       <div class="nav-wrap">
-        <div class="theme-chip" id="themeStatus" aria-live="polite">Tema automatico</div>
+        <!-- BOTON MANUAL TEMA (sin texto) -->
+        <button class="theme-toggle" id="themeToggle" aria-label="Cambiar tema" title="Cambiar tema">
+          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </button>
 
         <!-- NAV DESKTOP (sin boton de turnos en header) -->
         <nav class="nav" aria-label="Navegacion principal">
@@ -1204,9 +1168,7 @@
 
         <div class="services-grid">
           <article class="service-card">
-            <div class="service-image">
-              <img src="https://iili.io/qKh1Ba4.jpg" alt="Terapia manual y movilidad articular" loading="lazy" />
-            </div>
+            <div class="service-image"><img src="https://iili.io/qKh1Ba4.jpg" alt="Terapia manual y movilidad articular" loading="lazy" /></div>
             <div class="service-body">
               <h3>Terapia manual</h3>
               <p>Tecnicas manuales orientadas a aliviar dolor, mejorar la movilidad y reducir tensiones.</p>
@@ -1214,9 +1176,7 @@
           </article>
 
           <article class="service-card">
-            <div class="service-image">
-              <img src="https://iili.io/qKh1C8l.jpg" alt="Osteopatia y tratamiento cervical postural" loading="lazy" />
-            </div>
+            <div class="service-image"><img src="https://iili.io/qKh1C8l.jpg" alt="Osteopatia y tratamiento cervical postural" loading="lazy" /></div>
             <div class="service-body">
               <h3>Osteopatia</h3>
               <p>Abordaje manual para mejorar la movilidad cervical, postural y el equilibrio funcional del cuerpo.</p>
@@ -1224,9 +1184,7 @@
           </article>
 
           <article class="service-card">
-            <div class="service-image">
-              <img src="https://iili.io/qKh1o92.jpg" alt="Rehabilitacion funcional con atencion personalizada" loading="lazy" />
-            </div>
+            <div class="service-image"><img src="https://iili.io/qKh1o92.jpg" alt="Rehabilitacion funcional con atencion personalizada" loading="lazy" /></div>
             <div class="service-body">
               <h3>Rehabilitacion funcional</h3>
               <p>Tratamientos personalizados segun el dolor, la actividad y el objetivo de recuperacion de cada paciente.</p>
@@ -1234,9 +1192,7 @@
           </article>
 
           <article class="service-card">
-            <div class="service-image">
-              <img src="https://iili.io/qKh1xuS.jpg" alt="Kinesiologia deportiva y recuperacion de lesiones" loading="lazy" />
-            </div>
+            <div class="service-image"><img src="https://iili.io/qKh1xuS.jpg" alt="Kinesiologia deportiva y recuperacion de lesiones" loading="lazy" /></div>
             <div class="service-body">
               <h3>Kinesiologia deportiva</h3>
               <p>Recuperacion de lesiones, sobrecargas y prevencion para volver al entrenamiento de forma segura.</p>
@@ -1250,42 +1206,20 @@
       <div class="container benefits">
         <div class="panel">
           <h3>Enfoque de atencion</h3>
-          <p class="muted">
-            Tratamientos con evaluacion personalizada, objetivos claros y acompanamiento segun el tipo de dolor,
-            lesion o actividad fisica de cada paciente.
-          </p>
-
+          <p class="muted">Tratamientos con evaluacion personalizada, objetivos claros y acompanamiento segun el tipo de dolor, lesion o actividad fisica de cada paciente.</p>
           <div class="bullet-grid">
-            <div class="bullet">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Alivio del dolor
-            </div>
-            <div class="bullet">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Movilidad y postura
-            </div>
-            <div class="bullet">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Rehabilitacion funcional
-            </div>
-            <div class="bullet">
-              <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-              Prevencion de lesiones
-            </div>
+            <div class="bullet"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Alivio del dolor</div>
+            <div class="bullet"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Movilidad y postura</div>
+            <div class="bullet"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Rehabilitacion funcional</div>
+            <div class="bullet"><svg viewBox="0 0 24 24" fill="none"><path d="M20 6L9 17l-5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>Prevencion de lesiones</div>
           </div>
         </div>
 
         <div class="panel">
           <h3>Turnos por WhatsApp</h3>
-          <p class="muted">
-            Si queres consultar por dolor, lesion o tratamiento, escribi por WhatsApp y coordinamos tu turno.
-          </p>
-
+          <p class="muted">Si queres consultar por dolor, lesion o tratamiento, escribi por WhatsApp y coordinamos tu turno.</p>
           <div class="cta-box">
-            <a class="btn btn-whatsapp" href="https://wa.me/5491164606057?text=Hola%20Claudio,%20quiero%20consultar%20por%20un%20turno." target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.47 0 .09 5.36.09 11.96c0 2.11.55 4.18 1.6 6.01L0 24l6.2-1.62a11.92 11.92 0 0 0 5.87 1.5h.01c6.59 0 11.97-5.36 11.97-11.96c0-3.2-1.25-6.2-3.53-8.44ZM12.08 21.86h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.68.96.98-3.59-.23-.37a9.9 9.9 0 0 1-1.53-5.31c0-5.48 4.46-9.94 9.95-9.94c2.66 0 5.15 1.03 7.03 2.9a9.85 9.85 0 0 1 2.92 7.03c0 5.48-4.47 9.94-9.95 9.94Zm5.45-7.42c-.3-.15-1.79-.88-2.07-.98c-.28-.1-.48-.15-.68.15c-.2.3-.78.98-.95 1.18c-.18.2-.35.23-.65.08c-.3-.15-1.25-.46-2.39-1.47c-.89-.79-1.49-1.76-1.66-2.06c-.18-.3-.02-.46.13-.61c.14-.14.3-.35.45-.53c.15-.18.2-.3.3-.5c.1-.2.05-.38-.03-.53c-.08-.15-.68-1.65-.93-2.25c-.25-.61-.5-.52-.68-.53h-.58c-.2 0-.53.08-.8.38c-.28.3-1.05 1.03-1.05 2.51s1.08 2.92 1.23 3.12c.15.2 2.12 3.24 5.13 4.54c.72.31 1.28.49 1.72.62c.72.23 1.38.2 1.9.12c.58-.09 1.79-.73 2.05-1.44c.25-.71.25-1.31.18-1.44c-.08-.13-.28-.2-.58-.35Z"/></svg>
-              Escribir por WhatsApp
-            </a>
+            <a class="btn btn-whatsapp" href="https://wa.me/5491164606057?text=Hola%20Claudio,%20quiero%20consultar%20por%20un%20turno." target="_blank" rel="noopener noreferrer">Escribir por WhatsApp</a>
             <a class="btn btn-dark" href="#contacto">Ver ubicacion</a>
           </div>
         </div>
@@ -1308,16 +1242,9 @@
 
           <div class="about-content">
             <h3>Lic. Claudio Steinbach</h3>
-            <p>
-              Kinesiologo y osteopata con enfoque en terapia manual, rehabilitacion funcional y atencion orientada
-              a mejorar la movilidad, reducir el dolor y acompanar procesos de recuperacion.
-            </p>
-            <p>
-              Su perfil combina una mirada profesional con experiencia vinculada al deporte, ideal para personas activas,
-              deportistas y pacientes que buscan una atencion clara, personalizada y enfocada en resultados.
-            </p>
+            <p>Kinesiologo y osteopata con enfoque en terapia manual, rehabilitacion funcional y atencion orientada a mejorar la movilidad, reducir el dolor y acompanar procesos de recuperacion.</p>
+            <p>Su perfil combina una mirada profesional con experiencia vinculada al deporte, ideal para personas activas, deportistas y pacientes que buscan una atencion clara, personalizada y enfocada en resultados.</p>
 
-            <!-- VIDEO COMPLETO / SIN SONIDO -->
             <div class="about-video-wrap">
               <video
                 class="about-video"
@@ -1332,18 +1259,9 @@
             </div>
 
             <div class="stats">
-              <div class="stat">
-                <strong>Kinesiologia</strong>
-                <span>Enfoque profesional y personalizado</span>
-              </div>
-              <div class="stat">
-                <strong>Osteopatia</strong>
-                <span>Abordaje manual integral</span>
-              </div>
-              <div class="stat">
-                <strong>Bella Vista</strong>
-                <span>Atencion con turnos por WhatsApp</span>
-              </div>
+              <div class="stat"><strong>Kinesiologia</strong><span>Enfoque profesional y personalizado</span></div>
+              <div class="stat"><strong>Osteopatia</strong><span>Abordaje manual integral</span></div>
+              <div class="stat"><strong>Bella Vista</strong><span>Atencion con turnos por WhatsApp</span></div>
             </div>
           </div>
         </div>
@@ -1360,33 +1278,15 @@
         </div>
 
         <div class="ig-box">
-          <p class="muted" style="margin:0;">
-            En Instagram podes ver mas contenido del consultorio, videos explicativos, contexto de trabajo y novedades de atencion.
-          </p>
-
+          <p class="muted" style="margin:0;">En Instagram podes ver mas contenido del consultorio, videos explicativos, contexto de trabajo y novedades de atencion.</p>
           <div class="ig-grid">
-            <div class="ig-tile">
-              <strong>Consultorio y espacio de atencion</strong>
-              <span>Muestra del lugar, contexto profesional y experiencia de atencion.</span>
-            </div>
-            <div class="ig-tile">
-              <strong>Videos y demostraciones</strong>
-              <span>Contenido visual para generar confianza y explicar el enfoque de trabajo.</span>
-            </div>
-            <div class="ig-tile">
-              <strong>Perfil profesional</strong>
-              <span>Kinesiologia, osteopatia, terapia manual y turnos por WhatsApp.</span>
-            </div>
+            <div class="ig-tile"><strong>Consultorio y espacio de atencion</strong><span>Muestra del lugar, contexto profesional y experiencia de atencion.</span></div>
+            <div class="ig-tile"><strong>Videos y demostraciones</strong><span>Contenido visual para generar confianza y explicar el enfoque de trabajo.</span></div>
+            <div class="ig-tile"><strong>Perfil profesional</strong><span>Kinesiologia, osteopatia, terapia manual y turnos por WhatsApp.</span></div>
           </div>
-
           <div class="cta-box">
-            <a class="btn btn-instagram" href="https://www.instagram.com/kinesio.claudio" target="_blank" rel="noopener noreferrer">
-              <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true"><path fill="currentColor" d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5a4.25 4.25 0 0 0 4.25 4.25h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5a4.25 4.25 0 0 0-4.25-4.25h-8.5ZM17.5 6a1 1 0 1 1 0 2a1 1 0 0 1 0-2ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 15.5A3.5 3.5 0 0 0 12 8.5Z"/></svg>
-              Abrir Instagram
-            </a>
-            <a class="btn btn-whatsapp" href="https://wa.me/5491164606057?text=Hola%20Claudio,%20quiero%20consultar%20por%20un%20turno." target="_blank" rel="noopener noreferrer">
-              Consultar turno
-            </a>
+            <a class="btn btn-instagram" href="https://www.instagram.com/kinesio.claudio" target="_blank" rel="noopener noreferrer">Abrir Instagram</a>
+            <a class="btn btn-whatsapp" href="https://wa.me/5491164606057?text=Hola%20Claudio,%20quiero%20consultar%20por%20un%20turno." target="_blank" rel="noopener noreferrer">Consultar turno</a>
           </div>
         </div>
       </div>
@@ -1406,49 +1306,29 @@
             <h3>Datos de contacto</h3>
             <ul class="contact-list">
               <li class="contact-item">
-                <svg class="icon" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11Z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
-                <div>
-                  <strong>Direccion</strong>
-                  <span>Aconquija 890, Bella Vista</span>
-                </div>
+                <svg class="icon" viewBox="0 0 24 24" fill="none"><path d="M12 21s7-4.35 7-11a7 7 0 1 0-14 0c0 6.65 7 11 7 11Z" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="10" r="2.5" stroke="currentColor" stroke-width="2"/></svg>
+                <div><strong>Direccion</strong><span>Aconquija 890, Bella Vista</span></div>
               </li>
-
               <li class="contact-item">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.47 0 .09 5.36.09 11.96c0 2.11.55 4.18 1.6 6.01L0 24l6.2-1.62a11.92 11.92 0 0 0 5.87 1.5h.01c6.59 0 11.97-5.36 11.97-11.96c0-3.2-1.25-6.2-3.53-8.44ZM12.08 21.86h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.68.96.98-3.59-.23-.37a9.9 9.9 0 0 1-1.53-5.31c0-5.48 4.46-9.94 9.95-9.94c2.66 0 5.15 1.03 7.03 2.9a9.85 9.85 0 0 1 2.92 7.03c0 5.48-4.47 9.94-9.95 9.94Zm5.45-7.42c-.3-.15-1.79-.88-2.07-.98c-.28-.1-.48-.15-.68.15c-.2.3-.78.98-.95 1.18c-.18.2-.35.23-.65.08c-.3-.15-1.25-.46-2.39-1.47c-.89-.79-1.49-1.76-1.66-2.06c-.18-.3-.02-.46.13-.61c.14-.14.3-.35.45-.53c.15-.18.2-.3.3-.5c.1-.2.05-.38-.03-.53c-.08-.15-.68-1.65-.93-2.25c-.25-.61-.5-.52-.68-.53h-.58c-.2 0-.53.08-.8.38c-.28.3-1.05 1.03-1.05 2.51s1.08 2.92 1.23 3.12c.15.2 2.12 3.24 5.13 4.54c.72.31 1.28.49 1.72.62c.72.23 1.38.2 1.9.12c.58-.09 1.79-.73 2.05-1.44c.25-.71.25-1.31.18-1.44c-.08-.13-.28-.2-.58-.35Z"/></svg>
-                <div>
-                  <strong>WhatsApp</strong>
-                  <a href="https://wa.me/5491164606057?text=Hola%20Claudio,%20quiero%20consultar%20por%20un%20turno." target="_blank" rel="noopener noreferrer">+54 9 11 6460-6057</a>
-                </div>
+                <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.47 0 .09 5.36.09 11.96c0 2.11.55 4.18 1.6 6.01L0 24l6.2-1.62a11.92 11.92 0 0 0 5.87 1.5h.01c6.59 0 11.97-5.36 11.97-11.96c0-3.2-1.25-6.2-3.53-8.44ZM12.08 21.86h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.68.96.98-3.59-.23-.37a9.9 9.9 0 0 1-1.53-5.31c0-5.48 4.46-9.94 9.95-9.94c2.66 0 5.15 1.03 7.03 2.9a9.85 9.85 0 0 1 2.92 7.03c0 5.48-4.47 9.94-9.95 9.94Zm5.45-7.42c-.3-.15-1.79-.88-2.07-.98c-.28-.1-.48-.15-.68.15c-.2.3-.78.98-.95 1.18c-.18.2-.35.23-.65.08c-.3-.15-1.25-.46-2.39-1.47c-.89-.79-1.49-1.76-1.66-2.06c-.18-.3-.02-.46.13-.61c.14-.14.3-.35.45-.53c.15-.18.2-.3.3-.5c.1-.2.05-.38-.03-.53c-.08-.15-.68-1.65-.93-2.25c-.25-.61-.5-.52-.68-.53h-.58c-.2 0-.53.08-.8.38c-.28.3-1.05 1.03-1.05 2.51s1.08 2.92 1.23 3.12c.15.2 2.12 3.24 5.13 4.54c.72.31 1.28.49 1.72.62c.72.23 1.38.2 1.9.12c.58-.09 1.79-.73 2.05-1.44c.25-.71.25-1.31.18-1.44c-.08-.13-.28-.2-.58-.35Z"/></svg>
+                <div><strong>WhatsApp</strong><a href="https://wa.me/5491164606057?text=Hola%20Claudio,%20quiero%20consultar%20por%20un%20turno." target="_blank" rel="noopener noreferrer">+54 9 11 6460-6057</a></div>
               </li>
-
               <li class="contact-item">
-                <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5a4.25 4.25 0 0 0 4.25 4.25h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5a4.25 4.25 0 0 0-4.25-4.25h-8.5ZM17.5 6a1 1 0 1 1 0 2a1 1 0 0 1 0-2ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 15.5A3.5 3.5 0 0 0 12 8.5Z"/></svg>
-                <div>
-                  <strong>Instagram</strong>
-                  <a href="https://www.instagram.com/kinesio.claudio" target="_blank" rel="noopener noreferrer">@kinesio.claudio</a>
-                </div>
+                <svg class="icon" viewBox="0 0 24 24"><path fill="currentColor" d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5a4.25 4.25 0 0 0 4.25 4.25h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5a4.25 4.25 0 0 0-4.25-4.25h-8.5ZM17.5 6a1 1 0 1 1 0 2a1 1 0 0 1 0-2ZM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10Zm0 1.5A3.5 3.5 0 1 0 12 15.5A3.5 3.5 0 0 0 12 8.5Z"/></svg>
+                <div><strong>Instagram</strong><a href="https://www.instagram.com/kinesio.claudio" target="_blank" rel="noopener noreferrer">@kinesio.claudio</a></div>
               </li>
             </ul>
 
             <div class="cta-box">
-              <a class="btn btn-whatsapp" href="https://wa.me/5491164606057?text=Hola%20Claudio,%20quiero%20consultar%20por%20un%20turno." target="_blank" rel="noopener noreferrer">
-                Sacar turno por WhatsApp
-              </a>
-              <a class="btn btn-dark" href="https://www.instagram.com/kinesio.claudio" target="_blank" rel="noopener noreferrer">
-                Ver perfil de Instagram
-              </a>
+              <a class="btn btn-whatsapp" href="https://wa.me/5491164606057?text=Hola%20Claudio,%20quiero%20consultar%20por%20un%20turno." target="_blank" rel="noopener noreferrer">Sacar turno por WhatsApp</a>
+              <a class="btn btn-dark" href="https://www.instagram.com/kinesio.claudio" target="_blank" rel="noopener noreferrer">Ver perfil de Instagram</a>
             </div>
           </div>
 
           <div class="contact-card">
             <h3>Ubicacion</h3>
             <div class="map-wrap" aria-label="Mapa de ubicacion en Bella Vista">
-              <iframe
-                loading="lazy"
-                referrerpolicy="no-referrer-when-downgrade"
-                src="https://www.google.com/maps?q=Aconquija%20890%2C%20Bella%20Vista&output=embed"
-                title="Mapa Aconquija 890 Bella Vista">
-              </iframe>
+              <iframe loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://www.google.com/maps?q=Aconquija%20890%2C%20Bella%20Vista&output=embed" title="Mapa Aconquija 890 Bella Vista"></iframe>
             </div>
           </div>
         </div>
@@ -1463,57 +1343,95 @@
     </div>
   </footer>
 
-  <a
-    class="floating-wa"
-    href="https://wa.me/5491164606057?text=Hola%20Claudio,%20quiero%20consultar%20por%20un%20turno."
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="WhatsApp"
-    title="Turnos por WhatsApp">
-    <svg viewBox="0 0 24 24" aria-hidden="true">
-      <path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.47 0 .09 5.36.09 11.96c0 2.11.55 4.18 1.6 6.01L0 24l6.2-1.62a11.92 11.92 0 0 0 5.87 1.5h.01c6.59 0 11.97-5.36 11.97-11.96c0-3.2-1.25-6.2-3.53-8.44ZM12.08 21.86h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.68.96.98-3.59-.23-.37a9.9 9.9 0 0 1-1.53-5.31c0-5.48 4.46-9.94 9.95-9.94c2.66 0 5.15 1.03 7.03 2.9a9.85 9.85 0 0 1 2.92 7.03c0 5.48-4.47 9.94-9.95 9.94Zm5.45-7.42c-.3-.15-1.79-.88-2.07-.98c-.28-.1-.48-.15-.68.15c-.2.3-.78.98-.95 1.18c-.18.2-.35.23-.65.08c-.3-.15-1.25-.46-2.39-1.47c-.89-.79-1.49-1.76-1.66-2.06c-.18-.3-.02-.46.13-.61c.14-.14.3-.35.45-.53c.15-.18.2-.3.3-.5c.1-.2.05-.38-.03-.53c-.08-.15-.68-1.65-.93-2.25c-.25-.61-.5-.52-.68-.53h-.58c-.2 0-.53.08-.8.38c-.28.3-1.05 1.03-1.05 2.51s1.08 2.92 1.23 3.12c.15.2 2.12 3.24 5.13 4.54c.72.31 1.28.49 1.72.62c.72.23 1.38.2 1.9.12c.58-.09 1.79-.73 2.05-1.44c.25-.71.25-1.31.18-1.44c-.08-.13-.28-.2-.58-.35Z"/>
-    </svg>
+  <a class="floating-wa" href="https://wa.me/5491164606057?text=Hola%20Claudio,%20quiero%20consultar%20por%20un%20turno." target="_blank" rel="noopener noreferrer" aria-label="WhatsApp" title="Turnos por WhatsApp">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20.52 3.48A11.86 11.86 0 0 0 12.07 0C5.47 0 .09 5.36.09 11.96c0 2.11.55 4.18 1.6 6.01L0 24l6.2-1.62a11.92 11.92 0 0 0 5.87 1.5h.01c6.59 0 11.97-5.36 11.97-11.96c0-3.2-1.25-6.2-3.53-8.44ZM12.08 21.86h-.01a9.9 9.9 0 0 1-5.04-1.38l-.36-.21-3.68.96.98-3.59-.23-.37a9.9 9.9 0 0 1-1.53-5.31c0-5.48 4.46-9.94 9.95-9.94c2.66 0 5.15 1.03 7.03 2.9a9.85 9.85 0 0 1 2.92 7.03c0 5.48-4.47 9.94-9.95 9.94Zm5.45-7.42c-.3-.15-1.79-.88-2.07-.98c-.28-.1-.48-.15-.68.15c-.2.3-.78.98-.95 1.18c-.18.2-.35.23-.65.08c-.3-.15-1.25-.46-2.39-1.47c-.89-.79-1.49-1.76-1.66-2.06c-.18-.3-.02-.46.13-.61c.14-.14.3-.35.45-.53c.15-.18.2-.3.3-.5c.1-.2.05-.38-.03-.53c-.08-.15-.68-1.65-.93-2.25c-.25-.61-.5-.52-.68-.53h-.58c-.2 0-.53.08-.8.38c-.28.3-1.05 1.03-1.05 2.51s1.08 2.92 1.23 3.12c.15.2 2.12 3.24 5.13 4.54c.72.31 1.28.49 1.72.62c.72.23 1.38.2 1.9.12c.58-.09 1.79-.73 2.05-1.44c.25-.71.25-1.31.18-1.44c-.08-.13-.28-.2-.58-.35Z"/></svg>
   </a>
 
   <script>
     (function () {
       const html = document.documentElement;
-      const themeStatus = document.getElementById('themeStatus');
       const menuBtn = document.getElementById('menuBtn');
       const mobileMenu = document.getElementById('mobileMenu');
+      const themeToggle = document.getElementById('themeToggle');
+      const themeIcon = document.getElementById('themeIcon');
 
-      // Tema automatico segun hora local del dispositivo:
-      // 07:00 - 18:59 = claro
-      // 19:00 - 06:59 = oscuro
-      function applyAutoTheme() {
-        const now = new Date();
-        const hour = now.getHours();
-        const isDark = (hour >= 19 || hour < 7);
-        html.setAttribute('data-theme', isDark ? 'dark' : 'light');
+      // 06:00 a 18:59 = claro | 19:00 a 05:59 = oscuro
+      function getAutoThemeByHour() {
+        const hour = new Date().getHours();
+        return (hour >= 6 && hour < 19) ? 'light' : 'dark';
+      }
 
-        if (themeStatus) {
-          themeStatus.textContent = isDark
-            ? 'Tema automatico: oscuro (desde 19:00)'
-            : 'Tema automatico: claro (dia)';
-        }
-
+      function setMetaThemeColor(theme) {
         const metaTheme = document.querySelector('meta[name="theme-color"]');
-        if (metaTheme) {
-          metaTheme.setAttribute('content', isDark ? '#0b1220' : '#eef6ff');
+        if (metaTheme) metaTheme.setAttribute('content', theme === 'dark' ? '#0b1220' : '#eef6ff');
+      }
+
+      function updateThemeIcon(theme) {
+        if (!themeIcon) return;
+
+        if (theme === 'dark') {
+          // luna
+          themeIcon.innerHTML = '<path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8Z" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>';
+          themeToggle.setAttribute('title', 'Cambiar a tema claro');
+          themeToggle.setAttribute('aria-label', 'Cambiar a tema claro');
+        } else {
+          // sol
+          themeIcon.innerHTML = '<circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="2"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>';
+          themeToggle.setAttribute('title', 'Cambiar a tema oscuro');
+          themeToggle.setAttribute('aria-label', 'Cambiar a tema oscuro');
         }
       }
 
-      applyAutoTheme();
-      // Revalida cada minuto por si cambia la hora con la pagina abierta
-      setInterval(applyAutoTheme, 60000);
+      function applyTheme(theme) {
+        html.setAttribute('data-theme', theme);
+        setMetaThemeColor(theme);
+        updateThemeIcon(theme);
+      }
+
+      // Si existe override manual, respetarlo. Si no, usar auto por horario.
+      function applyInitialTheme() {
+        const saved = localStorage.getItem('kinesio_theme_override'); // light | dark | null
+        const theme = saved || getAutoThemeByHour();
+        applyTheme(theme);
+      }
+
+      // Revalida horario cada minuto SOLO si NO hay override manual
+      function autoRefreshThemeIfNeeded() {
+        const saved = localStorage.getItem('kinesio_theme_override');
+        if (!saved) {
+          applyTheme(getAutoThemeByHour());
+        }
+      }
+
+      // Toggle manual (guarda override)
+      if (themeToggle) {
+        themeToggle.addEventListener('click', function () {
+          const current = html.getAttribute('data-theme') || getAutoThemeByHour();
+          const next = current === 'dark' ? 'light' : 'dark';
+          localStorage.setItem('kinesio_theme_override', next);
+          applyTheme(next);
+        });
+
+        // Click largo para volver a automatico (opcional oculto, no molesta)
+        themeToggle.addEventListener('contextmenu', function (e) {
+          e.preventDefault();
+          localStorage.removeItem('kinesio_theme_override');
+          applyTheme(getAutoThemeByHour());
+        });
+      }
+
+      applyInitialTheme();
+      setInterval(autoRefreshThemeIfNeeded, 60000);
 
       // Menu hamburguesa
       function closeMenu() {
+        if (!mobileMenu || !menuBtn) return;
         mobileMenu.classList.remove('open');
         menuBtn.setAttribute('aria-expanded', 'false');
       }
 
       function toggleMenu() {
+        if (!mobileMenu || !menuBtn) return;
         const open = mobileMenu.classList.toggle('open');
         menuBtn.setAttribute('aria-expanded', String(open));
       }
@@ -1521,12 +1439,10 @@
       if (menuBtn && mobileMenu) {
         menuBtn.addEventListener('click', toggleMenu);
 
-        // Cerrar al tocar links
         mobileMenu.querySelectorAll('a').forEach(link => {
           link.addEventListener('click', closeMenu);
         });
 
-        // Cerrar si agranda pantalla
         window.addEventListener('resize', () => {
           if (window.innerWidth > 900) closeMenu();
         });
