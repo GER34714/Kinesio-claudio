@@ -1,3 +1,4 @@
+<!-- index.html (PARTE 1/2) -->
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,20 +23,76 @@
 
   <style>
     :root{
-      --bg:#070b14;
-      --bg-2:#0d1424;
-      --card:#101a2e;
-      --card-2:#0f172a;
-      --text:#eef5ff;
-      --muted:#a9b7d1;
-      --line:rgba(255,255,255,.10);
-      --brand:#15d7d0;
-      --brand-2:#2fb3ff;
-      --ok:#25D366;
-      --shadow:0 10px 35px rgba(0,0,0,.28);
+      --shadow:0 10px 35px rgba(0,0,0,.16);
       --radius:18px;
       --radius-sm:14px;
       --container:1120px;
+      --wa:#25D366;
+      --wa2:#18b95a;
+    }
+
+    /* TEMA OSCURO (default visual) */
+    html[data-theme="dark"]{
+      --bg-page-1:#060a12;
+      --bg-page-2:#0b1220;
+      --bg-page-3:#080d17;
+      --glow-a:rgba(47,179,255,.16);
+      --glow-b:rgba(21,215,208,.12);
+
+      --text:#eef5ff;
+      --muted:#a9b7d1;
+      --line:rgba(255,255,255,.10);
+
+      --brand:#15d7d0;
+      --brand-2:#2fb3ff;
+
+      --surface-1:rgba(255,255,255,.03);
+      --surface-2:rgba(255,255,255,.015);
+      --surface-3:rgba(255,255,255,.02);
+      --surface-4:rgba(255,255,255,.04);
+
+      --topbar:rgba(7,11,20,.72);
+      --btn-dark-bg:rgba(255,255,255,.03);
+      --btn-dark-text:var(--text);
+
+      --logo-box-a:rgba(21,215,208,.18);
+      --logo-box-b:rgba(47,179,255,.15);
+      --video-bg:#000;
+
+      --card-shadow:0 16px 28px rgba(0,0,0,.22);
+      --wa-ring:rgba(255,255,255,.05);
+    }
+
+    /* TEMA CLARO */
+    html[data-theme="light"]{
+      --bg-page-1:#f4fbff;
+      --bg-page-2:#eef6ff;
+      --bg-page-3:#f8fcff;
+      --glow-a:rgba(47,179,255,.10);
+      --glow-b:rgba(21,215,208,.08);
+
+      --text:#102037;
+      --muted:#556884;
+      --line:rgba(16,32,55,.10);
+
+      --brand:#0fbdb6;
+      --brand-2:#2a8fff;
+
+      --surface-1:rgba(255,255,255,.85);
+      --surface-2:rgba(255,255,255,.70);
+      --surface-3:rgba(255,255,255,.76);
+      --surface-4:rgba(16,32,55,.03);
+
+      --topbar:rgba(245,251,255,.86);
+      --btn-dark-bg:#ffffff;
+      --btn-dark-text:#0f2238;
+
+      --logo-box-a:rgba(21,215,208,.10);
+      --logo-box-b:rgba(47,179,255,.10);
+      --video-bg:#dfe8f3;
+
+      --card-shadow:0 10px 24px rgba(16,32,55,.10);
+      --wa-ring:rgba(16,32,55,.06);
     }
 
     *{ box-sizing:border-box; }
@@ -46,11 +103,12 @@
       overflow-x:hidden;
       scroll-behavior:smooth;
       background:
-        radial-gradient(900px 500px at 90% -10%, rgba(47,179,255,.16), transparent 60%),
-        radial-gradient(700px 400px at -10% 10%, rgba(21,215,208,.12), transparent 60%),
-        linear-gradient(180deg, #060a12 0%, #0b1220 45%, #080d17 100%);
+        radial-gradient(900px 500px at 90% -10%, var(--glow-a), transparent 60%),
+        radial-gradient(700px 400px at -10% 10%, var(--glow-b), transparent 60%),
+        linear-gradient(180deg, var(--bg-page-1) 0%, var(--bg-page-2) 45%, var(--bg-page-3) 100%);
       color:var(--text);
       font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      transition: background .35s ease, color .25s ease;
     }
 
     img{ max-width:100%; display:block; }
@@ -64,9 +122,9 @@
     .topbar{
       position:sticky;
       top:0;
-      z-index:40;
+      z-index:80;
       backdrop-filter: blur(10px);
-      background: rgba(7,11,20,.72);
+      background: var(--topbar);
       border-bottom:1px solid var(--line);
     }
 
@@ -74,7 +132,7 @@
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:14px;
+      gap:12px;
       min-height:72px;
     }
 
@@ -116,10 +174,30 @@
       text-overflow:ellipsis;
     }
 
-    .nav{
+    .nav-wrap{
       display:flex;
       align-items:center;
       gap:8px;
+    }
+
+    .theme-chip{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      border:1px solid var(--line);
+      background:var(--surface-3);
+      color:var(--muted);
+      border-radius:999px;
+      padding:8px 10px;
+      font-size:12px;
+      line-height:1;
+      white-space:nowrap;
+    }
+
+    .nav{
+      display:flex;
+      align-items:center;
+      gap:6px;
       flex-wrap:wrap;
       justify-content:flex-end;
     }
@@ -134,7 +212,58 @@
 
     .nav a:hover{
       color:var(--text);
-      background:rgba(255,255,255,.04);
+      background:var(--surface-4);
+    }
+
+    .menu-btn{
+      display:none;
+      width:44px;
+      height:44px;
+      border-radius:12px;
+      border:1px solid var(--line);
+      background:var(--surface-3);
+      color:var(--text);
+      align-items:center;
+      justify-content:center;
+      cursor:pointer;
+    }
+
+    .menu-btn svg{
+      width:22px;
+      height:22px;
+      display:block;
+    }
+
+    .mobile-menu{
+      display:none;
+      border-top:1px solid var(--line);
+      background:var(--topbar);
+      backdrop-filter: blur(10px);
+    }
+
+    .mobile-menu.open{ display:block; }
+
+    .mobile-menu-inner{
+      width:min(var(--container), calc(100% - 24px));
+      margin-inline:auto;
+      padding:10px 0 12px;
+      display:grid;
+      gap:8px;
+    }
+
+    .mobile-menu a{
+      border:1px solid var(--line);
+      background:var(--surface-3);
+      border-radius:12px;
+      padding:12px 14px;
+      color:var(--text);
+      font-size:14px;
+    }
+
+    .mobile-menu .mobile-actions{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:8px;
     }
 
     .btn{
@@ -155,28 +284,22 @@
     .btn:hover{ transform:translateY(-1px); }
     .btn:active{ transform:translateY(0); }
 
-    .btn-primary{
-      background:linear-gradient(135deg, var(--brand), var(--brand-2));
-      color:#04111a;
-      box-shadow:0 10px 24px rgba(21,215,208,.22);
-    }
-
     .btn-dark{
-      background:rgba(255,255,255,.03);
+      background:var(--btn-dark-bg);
       border-color:var(--line);
-      color:var(--text);
+      color:var(--btn-dark-text);
     }
 
     .btn-whatsapp{
-      background:linear-gradient(135deg, #28d86c, #18b95a);
+      background:linear-gradient(135deg, #28d86c, var(--wa2));
       color:#042012;
-      box-shadow:0 10px 24px rgba(37,211,102,.25);
+      box-shadow:0 10px 24px rgba(37,211,102,.22);
     }
 
     .btn-instagram{
-      background:rgba(255,255,255,.03);
+      background:var(--btn-dark-bg);
       border-color:var(--line);
-      color:var(--text);
+      color:var(--btn-dark-text);
     }
 
     .hero{
@@ -193,11 +316,12 @@
 
     .hero-card{
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      background:linear-gradient(180deg, var(--surface-1), var(--surface-2));
       border-radius:24px;
       box-shadow:var(--shadow);
       overflow:hidden;
       position:relative;
+      transition: background .25s ease, border-color .25s ease;
     }
 
     .hero-card::before{
@@ -226,9 +350,9 @@
     }
 
     .badge{
-      border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.03);
-      color:#dbe7ff;
+      border:1px solid var(--line);
+      background:var(--surface-3);
+      color:var(--text);
       border-radius:999px;
       padding:8px 10px;
       font-size:12px;
@@ -244,7 +368,7 @@
     }
 
     .hero h1 .accent{
-      background:linear-gradient(135deg, #fff, #cdeeff 45%, var(--brand) 90%);
+      background:linear-gradient(135deg, var(--text), color-mix(in srgb, var(--text) 55%, var(--brand) 45%) 45%, var(--brand) 90%);
       -webkit-background-clip:text;
       background-clip:text;
       color:transparent;
@@ -274,7 +398,7 @@
 
     .mini-card{
       border:1px solid var(--line);
-      background:rgba(255,255,255,.02);
+      background:var(--surface-3);
       border-radius:14px;
       padding:12px;
     }
@@ -301,7 +425,7 @@
 
     .profile-card{
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      background:linear-gradient(180deg, var(--surface-1), var(--surface-2));
       border-radius:18px;
       padding:14px;
       display:flex;
@@ -340,7 +464,7 @@
 
     .info-card{
       border:1px solid var(--line);
-      background:rgba(255,255,255,.02);
+      background:var(--surface-3);
       border-radius:18px;
       padding:14px;
     }
@@ -348,7 +472,7 @@
     .info-card h3{
       margin:0 0 10px;
       font-size:14px;
-      color:#dce9ff;
+      color:var(--text);
     }
 
     .info-list{
@@ -410,7 +534,7 @@
 
     .service-card{
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.015));
+      background:linear-gradient(180deg, var(--surface-3), var(--surface-2));
       border-radius:16px;
       overflow:hidden;
       display:flex;
@@ -422,7 +546,7 @@
     .service-card:hover{
       transform:translateY(-3px);
       border-color:rgba(47,179,255,.28);
-      box-shadow:0 16px 28px rgba(0,0,0,.22);
+      box-shadow:var(--card-shadow);
     }
 
     .service-image{
@@ -432,7 +556,7 @@
       align-items:center;
       justify-content:center;
       padding:10px;
-      border-bottom:1px solid rgba(0,0,0,.03);
+      border-bottom:1px solid rgba(0,0,0,.04);
     }
 
     .service-image img{
@@ -475,7 +599,7 @@
 
     .panel{
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.015));
+      background:linear-gradient(180deg, var(--surface-3), var(--surface-2));
       border-radius:18px;
       padding:16px;
       box-shadow:var(--shadow);
@@ -503,11 +627,11 @@
 
     .bullet{
       border:1px solid var(--line);
-      background:rgba(255,255,255,.02);
+      background:var(--surface-3);
       border-radius:12px;
       padding:12px;
       font-size:14px;
-      color:#dce7fb;
+      color:var(--text);
       min-height:54px;
       display:flex;
       align-items:center;
@@ -530,7 +654,7 @@
 
     .about-logo-box{
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.03), rgba(255,255,255,.015));
+      background:linear-gradient(180deg, var(--surface-1), var(--surface-2));
       border-radius:18px;
       padding:18px;
       display:flex;
@@ -546,8 +670,8 @@
       position:absolute;
       inset:-20% -10%;
       background:
-        radial-gradient(240px 180px at 20% 20%, rgba(21,215,208,.18), transparent 60%),
-        radial-gradient(260px 200px at 80% 80%, rgba(47,179,255,.15), transparent 60%);
+        radial-gradient(240px 180px at 20% 20%, var(--logo-box-a), transparent 60%),
+        radial-gradient(260px 200px at 80% 80%, var(--logo-box-b), transparent 60%);
       pointer-events:none;
     }
 
@@ -561,7 +685,7 @@
     }<!-- index.html (PARTE 2/2) -->
     .about-content{
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.015));
+      background:linear-gradient(180deg, var(--surface-3), var(--surface-2));
       border-radius:18px;
       padding:18px;
     }
@@ -582,7 +706,7 @@
     .about-video-wrap{
       margin: 12px 0 4px;
       border:1px solid var(--line);
-      background:rgba(255,255,255,.02);
+      background:var(--surface-3);
       border-radius:14px;
       padding:8px;
       max-width: 420px;
@@ -592,9 +716,9 @@
       width:100%;
       display:block;
       border-radius:10px;
-      background:#000;
+      background:var(--video-bg);
       aspect-ratio: 16 / 9;
-      object-fit: cover;
+      object-fit: contain; /* se ve entero */
     }
 
     .stats{
@@ -606,7 +730,7 @@
 
     .stat{
       border:1px solid var(--line);
-      background:rgba(255,255,255,.02);
+      background:var(--surface-3);
       border-radius:12px;
       padding:12px;
       text-align:left;
@@ -617,7 +741,7 @@
       font-size:18px;
       line-height:1;
       margin-bottom:4px;
-      color:#ecf6ff;
+      color:var(--text);
     }
 
     .stat span{
@@ -628,7 +752,7 @@
 
     .ig-box{
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.015));
+      background:linear-gradient(180deg, var(--surface-3), var(--surface-2));
       border-radius:18px;
       padding:16px;
     }
@@ -642,7 +766,7 @@
 
     .ig-tile{
       border:1px solid var(--line);
-      background:rgba(255,255,255,.02);
+      background:var(--surface-3);
       border-radius:14px;
       padding:12px;
       min-height:110px;
@@ -671,7 +795,7 @@
 
     .contact-card{
       border:1px solid var(--line);
-      background:linear-gradient(180deg, rgba(255,255,255,.02), rgba(255,255,255,.015));
+      background:linear-gradient(180deg, var(--surface-3), var(--surface-2));
       border-radius:18px;
       padding:16px;
       box-shadow:var(--shadow);
@@ -692,7 +816,7 @@
 
     .contact-item{
       border:1px solid var(--line);
-      background:rgba(255,255,255,.02);
+      background:var(--surface-3);
       border-radius:12px;
       padding:12px;
       display:flex;
@@ -733,9 +857,11 @@
       border:1px solid var(--line);
       border-radius:14px;
       overflow:hidden;
-      background:#0b1220;
+      background:#dfe8f3;
       min-height:320px;
     }
+
+    html[data-theme="dark"] .map-wrap{ background:#0b1220; }
 
     .map-wrap iframe{
       width:100%;
@@ -763,7 +889,8 @@
     }
 
     .footer a{
-      color:#cfefff;
+      color:var(--brand-2);
+      font-weight:600;
     }
 
     .floating-wa{
@@ -776,16 +903,16 @@
       border-radius:50%;
       display:grid;
       place-items:center;
-      background:#25D366;
+      background:var(--wa);
       color:#fff;
-      box-shadow:0 14px 30px rgba(37,211,102,.32), 0 0 0 4px rgba(255,255,255,.05);
+      box-shadow:0 14px 30px rgba(37,211,102,.32), 0 0 0 4px var(--wa-ring);
       border:1px solid rgba(255,255,255,.22);
       transition:transform .15s ease, box-shadow .2s ease;
     }
 
     .floating-wa:hover{
       transform:translateY(-2px);
-      box-shadow:0 18px 34px rgba(37,211,102,.36), 0 0 0 4px rgba(255,255,255,.05);
+      box-shadow:0 18px 34px rgba(37,211,102,.36), 0 0 0 4px var(--wa-ring);
     }
 
     .floating-wa svg{
@@ -815,9 +942,13 @@
       }
     }
 
-    @media (max-width: 820px){
-      .nav a:not(.cta-nav){ display:none; }
+    @media (max-width: 900px){
+      .nav{ display:none; }
+      .theme-chip{ display:none; }
+      .menu-btn{ display:inline-flex; }
+    }
 
+    @media (max-width: 820px){
       .topbar-inner{
         min-height:66px;
       }
@@ -923,11 +1054,14 @@
       .about-video-wrap{
         max-width:100%;
       }
+
+      .mobile-menu .mobile-actions{
+        grid-template-columns:1fr;
+      }
     }
   </style>
 </head>
 <body>
-
   <header class="topbar">
     <div class="container topbar-inner">
       <a class="brand" href="#inicio" aria-label="Inicio">
@@ -938,15 +1072,43 @@
         </div>
       </a>
 
-      <nav class="nav" aria-label="Navegacion principal">
+      <div class="nav-wrap">
+        <div class="theme-chip" id="themeStatus" aria-live="polite">Tema automatico</div>
+
+        <!-- NAV DESKTOP (sin boton de turnos en header) -->
+        <nav class="nav" aria-label="Navegacion principal">
+          <a href="#servicios">Servicios</a>
+          <a href="#sobre-mi">Sobre mi</a>
+          <a href="#instagram">Instagram</a>
+          <a href="#contacto">Contacto</a>
+        </nav>
+
+        <!-- HAMBURGUESA MOBILE -->
+        <button class="menu-btn" id="menuBtn" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- MENU MOBILE -->
+    <div class="mobile-menu" id="mobileMenu">
+      <div class="mobile-menu-inner">
         <a href="#servicios">Servicios</a>
         <a href="#sobre-mi">Sobre mi</a>
         <a href="#instagram">Instagram</a>
         <a href="#contacto">Contacto</a>
-        <a class="btn btn-whatsapp cta-nav" href="https://wa.me/5491164606057?text=Hola%20Claudio,%20quiero%20consultar%20por%20un%20turno." target="_blank" rel="noopener noreferrer">
-          Turnos por WhatsApp
-        </a>
-      </nav>
+
+        <div class="mobile-actions">
+          <a class="btn btn-whatsapp" href="https://wa.me/5491164606057?text=Hola%20Claudio,%20quiero%20consultar%20por%20un%20turno." target="_blank" rel="noopener noreferrer">
+            Turnos por WhatsApp
+          </a>
+          <a class="btn btn-instagram" href="https://www.instagram.com/kinesio.claudio" target="_blank" rel="noopener noreferrer">
+            Ver Instagram
+          </a>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -1155,7 +1317,7 @@
               deportistas y pacientes que buscan una atencion clara, personalizada y enfocada en resultados.
             </p>
 
-            <!-- VIDEO AGREGADO (debajo del texto pedido) -->
+            <!-- VIDEO COMPLETO / SIN SONIDO -->
             <div class="about-video-wrap">
               <video
                 class="about-video"
@@ -1165,7 +1327,7 @@
                 loop
                 playsinline
                 preload="metadata"
-                controls
+                controlslist="nodownload noplaybackrate"
               ></video>
             </div>
 
@@ -1313,5 +1475,63 @@
     </svg>
   </a>
 
+  <script>
+    (function () {
+      const html = document.documentElement;
+      const themeStatus = document.getElementById('themeStatus');
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+
+      // Tema automatico segun hora local del dispositivo:
+      // 07:00 - 18:59 = claro
+      // 19:00 - 06:59 = oscuro
+      function applyAutoTheme() {
+        const now = new Date();
+        const hour = now.getHours();
+        const isDark = (hour >= 19 || hour < 7);
+        html.setAttribute('data-theme', isDark ? 'dark' : 'light');
+
+        if (themeStatus) {
+          themeStatus.textContent = isDark
+            ? 'Tema automatico: oscuro (desde 19:00)'
+            : 'Tema automatico: claro (dia)';
+        }
+
+        const metaTheme = document.querySelector('meta[name="theme-color"]');
+        if (metaTheme) {
+          metaTheme.setAttribute('content', isDark ? '#0b1220' : '#eef6ff');
+        }
+      }
+
+      applyAutoTheme();
+      // Revalida cada minuto por si cambia la hora con la pagina abierta
+      setInterval(applyAutoTheme, 60000);
+
+      // Menu hamburguesa
+      function closeMenu() {
+        mobileMenu.classList.remove('open');
+        menuBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      function toggleMenu() {
+        const open = mobileMenu.classList.toggle('open');
+        menuBtn.setAttribute('aria-expanded', String(open));
+      }
+
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', toggleMenu);
+
+        // Cerrar al tocar links
+        mobileMenu.querySelectorAll('a').forEach(link => {
+          link.addEventListener('click', closeMenu);
+        });
+
+        // Cerrar si agranda pantalla
+        window.addEventListener('resize', () => {
+          if (window.innerWidth > 900) closeMenu();
+        });
+      }
+    })();
+  </script>
 </body>
 </html>
